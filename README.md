@@ -27,8 +27,10 @@ Simple MEAN blog
 - [ ] Move to AWS
 
 
+========================================================================================
+## Architecture
 
-## Project Structure
+### Project Structure
 [Potential Structures](https://gist.github.com/lancejpollard/1398757)
 ```
 |-- app
@@ -41,5 +43,24 @@ Simple MEAN blog
 |       `-- views
 ```
 
+### Models
+
+User = {
+    name,
+    username,
+    email,
+    password,
+    accessLevel
+}
+
+AccessLevel = [view, edit, admin]
+
+BlogPost = {
+    title,
+    text,
+    author,
+    date,
+    lastUpdate
+}
 
 

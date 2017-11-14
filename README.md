@@ -29,15 +29,16 @@ Simple MEAN blog
 
 
 ## Project Structure
-[Potential Structures]("https://gist.github.com/lancejpollard/1398757")
-|-- app
-|   |-- controllers
-|   |-- models
-|   |-- views
-|   `-- client
-|       |-- controllers
-|       |-- models
-|       `-- views
+[Potential Structures](https://gist.github.com/lancejpollard/1398757)
+
+>|-- app
+>|   |-- controllers
+>|   |-- models
+>|   |-- views
+>|   `-- client
+>|       |-- controllers
+>|       |-- models
+>|       `-- views
 
 
 

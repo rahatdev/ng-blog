@@ -17,14 +17,14 @@ Simple MEAN blog
 
 
 ## Todo
-[] Connect to mdb server
-[] Backend
-    * models
-        * user
-        * blogpost
+- [ ] Connect to mdb server
+- [ ] Backend
+    * [ ] models
+        * [ ] user
+        * [ ] blogpost
     * backend routes
-[] Front end 
-[] Move to AWS
+- [ ] Front end 
+- [ ] Move to AWS
 
 
 

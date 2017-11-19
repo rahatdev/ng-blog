@@ -7,7 +7,10 @@ const cors = require('cors')
 const passport = require('passport')
 
 const mongoose = require('mongoose')
-const dbconfig = requrie('./config/db')
+const dbconfig = require('./config/db')
+
+//routes
+const users = require('./routes/users')
 
 //db connection
 mongoose.connect(dbconfig.database)
@@ -24,8 +27,14 @@ const app = express()
 const port = 3000;
 
 //initial gets  
+app.get('/', (req, res) => {
+    res.send('magical things are about to happen')
+})
 // routes for user
+app.use('/user', users)
+
 // routes for post
+
 
 
 // Start Server

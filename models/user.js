@@ -7,7 +7,7 @@ const UserSchema = mongoose.Schema({
     email: {
         type: String,
         require: true
-    }
+    },
     username: {
         type: String,
         require: true
@@ -18,4 +18,34 @@ const UserSchema = mongoose.Schema({
     }
 })
 
-const User = module.exports = mongoose.model('User', UserSchema)
+const User = mongoose.model('User', UserSchema)
+
+function createUser(newUser, callback){
+    //TODO
+}
+
+function getUserById(){
+    //TODO
+}
+
+function getUserByUsername(){
+    //TODO
+}
+function comparePassword(){
+    //TODO
+}
+
+function updateUser(){
+    //TODO
+}
+
+
+module.exports({
+    User,
+    createUser,
+    getUserById,
+    getUserByUsername,
+    comparePassword,
+    updateUser
+})
+

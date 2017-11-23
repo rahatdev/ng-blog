@@ -37,8 +37,6 @@ app.use('/users', users)
 
 // routes for post
 
-
-
 // Start Server
 app.listen(port, () => {
     console.log('Listening on port ' + port)

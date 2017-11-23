@@ -3,7 +3,7 @@ import { Date } from 'core-js/library/web/timers';
 const mongoose = require('mongoose')
 
 const BlogpostSchema = mongoose.Schema({
-    author: {
+    author: { //username or _id 
         type: String,
         require: true
     },
@@ -23,6 +23,24 @@ const BlogpostSchema = mongoose.Schema({
 const Blogpost = module.exports = mongoose.model('Blogpost', BlogpostSchema)
 
 //create
+const putBlogpost = module.exports.putBlogpost = (newBlogpost, callback) => {
+    newBlogpost.save(callback)
+}
 //read
+const getBlogPosts = module.exports.getBlogPosts = (author, callback) => {
+    let query = {}
+    if(author) query.author = author
+
+    Blogpost.find(query, callback)
+}
+
+const getBlogPost = module.exports.getBlogPost = (id, callback) => {
+    if(!id) callback(new Error('id cannot be null'))
+    Blogpost.findById(id, callback)
+}
+// search?
+
+
 //update
 
+//delete??

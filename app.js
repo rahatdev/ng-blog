@@ -8,7 +8,8 @@ const bodyParser = require('body-parser'),
     dbconfig = require('./config/db')
 
 //routes
-const users = require('./routes/users')
+const users = require('./routes/users'),
+    blogposts = require('./routes/blogposts')
 
 //db connection
 mongoose.connect(dbconfig.database)
@@ -32,10 +33,10 @@ require('./config/passport-config')(passport)
 app.get('/', (req, res) => {
     res.send('magical things are about to happen')
 })
-// routes for user
+// routes 
 app.use('/users', users)
+app.use('/posts/', blogposts)
 
-// routes for post
 
 // Start Server
 app.listen(port, () => {

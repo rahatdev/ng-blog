@@ -1,4 +1,4 @@
-import { Date } from 'core-js/library/web/timers';
+//import { Date } from 'core-js/library/web/timers';
 
 const express = require('express')
 const router = express.Router()
@@ -47,3 +47,5 @@ router.get('/posts', (req, res, next) => {
 router.get('/post.:postId', (req, res, next) => {
     //TODO - get post by id
 })
+
+module.exports = router

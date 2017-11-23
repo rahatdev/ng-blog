@@ -1,4 +1,4 @@
-import { Date } from 'core-js/library/web/timers';
+//import { Date } from 'core-js/library/web/timers';
 
 const mongoose = require('mongoose')
 
@@ -8,7 +8,7 @@ const BlogpostSchema = mongoose.Schema({
         require: true
     },
     date: {
-        type: Date,
+        type: String,
         require: true
     },
     content: {

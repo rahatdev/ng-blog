@@ -23,24 +23,24 @@ const UserSchema = mongoose.Schema({
 const User = module.exports = mongoose.model('User', UserSchema)
 
 module.exports.createUser = (newUser, callback) => {
+    // check if username already exists
     getUserByUsername(newUser.username, (err,user) => {
         if(err) handleError(err)
         if(!user){
             console.log('username available, creating user')
-            newUser.save(callback)
+            //encrypt password
+            bcrypt.genSalt(10, (err,salt) => {
+                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    if(err) handleError(err)
+                    newUser.password = hash
+                    newUser.save(callback)
+                })
+            })
         } else {
             console.log(newUser.username + ' already exists, cannot create user')
             callback(new Error(newUser.username + ' already exists.'))
         }
-    })
-
-    // let exists = usernameExists(newUser.username, null)
-    // if(!exists){
-    //     console.log('available!')
-    // } else {
-    //     console.log('username already exists')
-    // }
-    // newUser.save(callback);    
+    })   
 }
 
 const getUserByUsername = module.exports.getUserByUsername = (username, callback) => {
@@ -53,11 +53,19 @@ const getUserByID = function (id, callback) {
 }
 
 
-function comparePassword() {
-    //TODO
+const comparePassword = module.exports.comparePassword = (password, hash, callback) => {
+    bcrypt.compare(password, hash, (err, isMatch) => {
+        if(err) handleError(err)
+        callback(null, isMatch)
+    })
 }
 
 function updateUser() {
+    //TODO
+}
+
+// Should this exist?
+function deleteUser(){
     //TODO
 }
 

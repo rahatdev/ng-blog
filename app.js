@@ -26,7 +26,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(passport.initialize())
 app.use(passport.session())
-
+require('./config/passport-config')(passport)
 
 //initial gets  
 app.get('/', (req, res) => {

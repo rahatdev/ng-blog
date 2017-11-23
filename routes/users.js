@@ -73,6 +73,7 @@ router.post('/authenticate', (req, res, next) => {
 })
 
 //get
+//TODO application should not crash if passport auth fails
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     res.send('heres yer profile')
 })

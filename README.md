@@ -20,9 +20,11 @@ Simple MEAN blog
 - [ ] Connect to mdb server
 - [ ] Backend
     * [ ] models
-        * [ ] user
+        * [ ] user -- CURRENT
         * [ ] blogpost
     * [ ] backend routes
+    * Unit tests
+    * Catch errors/improve stability
 - [ ] Front end 
 - [ ] Move to AWS
 

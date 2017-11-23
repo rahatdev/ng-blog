@@ -11,6 +11,6 @@ router.get('/posts', (req, res, next) => {
     //TODO - get all blog posts
 })
 
-router.get('/blogpost', (req, res, next) => {
+router.get('/post.:postId', (req, res, next) => {
     //TODO - get post by id
 })

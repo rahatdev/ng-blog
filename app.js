@@ -24,6 +24,7 @@ mongoose.connection.on('error', (err) => {
 
 //initialize app
 const app = express()
+app.use(bodyParser.json())
 const port = 3000;
 
 //initial gets  
@@ -31,7 +32,7 @@ app.get('/', (req, res) => {
     res.send('magical things are about to happen')
 })
 // routes for user
-app.use('/user', users)
+app.use('/users', users)
 
 // routes for post
 

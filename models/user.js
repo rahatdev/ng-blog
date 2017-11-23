@@ -23,31 +23,31 @@ const UserSchema = mongoose.Schema({
 const User = module.exports = mongoose.model('User', UserSchema)
 
 module.exports.createUser = (newUser, callback) => {
-    console.log('Attempting to create ' + newUser.username)
-    
-    usernameExists(newUser.username).then(exists => {
-        console.log('username exists - ' + exists)
-        if (exists === true) console.log(+newUser.username + ' already exists')
-        else console.log(newUser.username + 'is available')
+    getUserByUsername(newUser.username, (err,user) => {
+        if(err) handleError(err)
+        if(!user){
+            console.log('username available, creating user')
+            newUser.save(callback)
+        } else {
+            console.log(newUser.username + ' already exists, cannot create user')
+            callback(new Error(newUser.username + ' already exists.'))
+        }
     })
+
+    // let exists = usernameExists(newUser.username, null)
+    // if(!exists){
+    //     console.log('available!')
+    // } else {
+    //     console.log('username already exists')
+    // }
     // newUser.save(callback);    
 }
 
-const usernameExists = (username, callback) => {
-    console.log('searching for username: ' + username)
-    getUserByUsername(username, (err, user) => {
-        if (err) handleError(err)
-        console.log(user)
-
-        if(user !== undefined) return true
-        else return false
-    })
-}
-
-const getUserByUsername = (username, callback) => {
+const getUserByUsername = module.exports.getUserByUsername = (username, callback) => {
     let query = { username: username }
     User.findOne(query, callback)
 }
+
 const getUserByID = function (id, callback) {
     User.findById(id, callback);
 }

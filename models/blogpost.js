@@ -27,14 +27,14 @@ const putBlogpost = module.exports.putBlogpost = (newBlogpost, callback) => {
     newBlogpost.save(callback)
 }
 //read
-const getBlogPosts = module.exports.getBlogPosts = (author, callback) => {
+const getBlogposts = module.exports.getBlogPosts = (author, callback) => {
     let query = {}
     if(author) query.author = author
 
     Blogpost.find(query, callback)
 }
 
-const getBlogPost = module.exports.getBlogPost = (id, callback) => {
+const getBlogpost = module.exports.getBlogPost = (id, callback) => {
     if(!id) callback(new Error('id cannot be null'))
     Blogpost.findById(id, callback)
 }

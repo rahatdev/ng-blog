@@ -1,13 +1,11 @@
 const express = require('express')
 
-const bodyParser = require('body-parser')
-const path = require('path')
-
-const cors = require('cors')
-const passport = require('passport')
-
-const mongoose = require('mongoose')
-const dbconfig = require('./config/db')
+const bodyParser = require('body-parser'),
+    path = require('path'),
+    cors = require('cors'),
+    passport = require('passport'),
+    mongoose = require('mongoose'),
+    dbconfig = require('./config/db')
 
 //routes
 const users = require('./routes/users')
@@ -15,17 +13,20 @@ const users = require('./routes/users')
 //db connection
 mongoose.connect(dbconfig.database)
 mongoose.connection.on('connected', () => {
-    console.log("Connected to database " +dbconfig.database)
+    console.log("Connected to database " + dbconfig.database)
 })
 mongoose.connection.on('error', (err) => {
-    console.log("Database connection error: " +err)
+    console.log("Database connection error: " + err)
 })
 
 
 //initialize app
+const port = 3000;
 const app = express()
 app.use(bodyParser.json())
-const port = 3000;
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 //initial gets  
 app.get('/', (req, res) => {
@@ -40,5 +41,5 @@ app.use('/users', users)
 
 // Start Server
 app.listen(port, () => {
-    console.log('Listening on port ' +port)
+    console.log('Listening on port ' + port)
 })

@@ -26,21 +26,7 @@ const BlogpostSchema = mongoose.Schema({
 
 const Blogpost = module.exports = mongoose.model('Blogpost', BlogpostSchema)
 
-//create
-const putBlogpost = module.exports.putBlogpost = (newBlogpost, callback) => {
-    getBlogpostByTitle(newBlogpost.title, (err, blogpost) => {
-        if(err) handleError(err)
-        if(!blogpost){
-            console.log('Adding post to database')
-            newBlogpost.save(callback)
-        } else {
-            console.log('Could not add to database - title exists already')
-            callback(new Error(newBlogpost.title +' already exists, please use a different title.'))
-        }
-    })
-    
-}
-//read
+//get
 const getBlogposts = module.exports.getBlogposts = (author, callback) => {
     let query = {}
     if(author) query.author = author
@@ -59,7 +45,20 @@ const getBlogpostByTitle = (title, callback) => {
 }
 // search?
 
-
+//put
+const putBlogpost = module.exports.putBlogpost = (newBlogpost, callback) => {
+    getBlogpostByTitle(newBlogpost.title, (err, blogpost) => {
+        if(err) handleError(err)
+        if(!blogpost){
+            console.log('Adding post to database')
+            newBlogpost.save(callback)
+        } else {
+            console.log('Could not add to database - title exists already')
+            callback(new Error(newBlogpost.title +' already exists, please use a different title.'))
+        }
+    })
+    
+}
 //update
 
 //delete??

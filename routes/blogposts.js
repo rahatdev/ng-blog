@@ -2,25 +2,9 @@
 
 const express = require('express')
 const router = express.Router()
+const passport = require('passport')
 
 const Blogpost = require('../models/blogpost')
-
-//post
-router.post('/new', (req, res, next) => {
-    //TODO -- check if author is valid, and token is valid
-    let newBlogpost = new Blogpost({
-        author: req.body.author,
-        date: '',//new Date().getDate() //need to experiment
-        title: req.body.title,
-        content: req.body.content,
-        public: req.body.public
-    })
-
-    Blogpost.putBlogpost(newBlogpost, (err, blogpost) => {
-        if(err) res.send({success: false, msg: err.message})
-        else res.send({success: true, msg:'Post created successfully'})
-    })
-})
 
 //get
 router.get('/all', (req, res, next) => {
@@ -48,5 +32,24 @@ router.get('/all', (req, res, next) => {
 router.get('/post.:postId', (req, res, next) => {
     //TODO - get post by id
 })
+
+// All post routes should be protected
+//post
+router.post('/new', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    //TODO -- check if author is valid, and token is valid
+    let newBlogpost = new Blogpost({
+        author: req.body.author,
+        date: '',//new Date().getDate() //need to experiment
+        title: req.body.title,
+        content: req.body.content,
+        public: req.body.public
+    })
+
+    Blogpost.putBlogpost(newBlogpost, (err, blogpost) => {
+        if(err) res.send({success: false, msg: err.message})
+        else res.send({success: true, msg:'Post created successfully'})
+    })
+})
+
 
 module.exports = router

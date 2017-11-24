@@ -19,12 +19,14 @@ Simple MEAN blog
 ## Todo
 - [ ] Connect to mdb server
 - [ ] Backend
-    * [ ] models
-        * [ ] user -- CURRENT
-        * [ ] blogpost
-    * [ ] backend routes
-    * Unit tests
-    * Catch errors/improve stability
+    * [x] models
+        * [x] user 
+        * [x] blogpost 
+            * [x] autehntication for create and edit
+    * [x] backend routes
+    * [ ]Unit tests
+    * [ ]Catch errors/improve stability
+    * [ ]Linting
 - [ ] Front end 
 - [ ] Move to AWS
 

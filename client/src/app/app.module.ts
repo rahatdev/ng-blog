@@ -9,6 +9,10 @@ import { HomeComponent } from './components/home/home.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ViewComponent } from './components/view/view.component';
 
+//auth service
+//validate service
+//auth guard
+
 
 @NgModule({
   declarations: [

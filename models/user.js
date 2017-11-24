@@ -73,19 +73,3 @@ function deleteUser(){
 const handleError = (err) => {
     console.log(err.message);
 }
-
-
-// module.exports = this.User
-// module.exports = createUser
-// module.exports = () => {
-//     return {
-//         User,
-//         createUser,
-//         getUserByID,
-//         getUserByUsername,
-//         comparePassword,
-//         updateUser
-//     }
-
-// }
-

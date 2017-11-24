@@ -11,6 +11,7 @@ router.post('/new', (req, res, next) => {
     let newBlogpost = new Blogpost({
         author: req.body.author,
         date: '',//new Date().getDate() //need to experiment
+        title: req.body.title,
         content: req.body.content,
         public: req.body.public
     })
@@ -22,7 +23,7 @@ router.post('/new', (req, res, next) => {
 })
 
 //get
-router.get('/posts', (req, res, next) => {
+router.get('/all', (req, res, next) => {
     //TODO - get all blog posts
     //TODO - if not loggedin, show only public posts
     //TODO - if loggedin, show all posts for username

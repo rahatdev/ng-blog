@@ -11,6 +11,10 @@ const BlogpostSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    title: {
+        type: String,
+        require: true
+    },
     content: {
         type: String,
         require: true
@@ -24,19 +28,34 @@ const Blogpost = module.exports = mongoose.model('Blogpost', BlogpostSchema)
 
 //create
 const putBlogpost = module.exports.putBlogpost = (newBlogpost, callback) => {
-    newBlogpost.save(callback)
+    getBlogpostByTitle(newBlogpost.title, (err, blogpost) => {
+        if(err) handleError(err)
+        if(!blogpost){
+            console.log('Adding post to database')
+            newBlogpost.save(callback)
+        } else {
+            console.log('Could not add to database - title exists already')
+            callback(new Error(newBlogpost.title +' already exists, please use a different title.'))
+        }
+    })
+    
 }
 //read
-const getBlogposts = module.exports.getBlogPosts = (author, callback) => {
+const getBlogposts = module.exports.getBlogposts = (author, callback) => {
     let query = {}
     if(author) query.author = author
 
     Blogpost.find(query, callback)
 }
 
-const getBlogpost = module.exports.getBlogPost = (id, callback) => {
+const getBlogpost = module.exports.getBlogpost = (id, callback) => {
     if(!id) callback(new Error('id cannot be null'))
     Blogpost.findById(id, callback)
+}
+
+const getBlogpostByTitle = (title, callback) => {
+    if(!title) callback(new Error('Title cannot be null'))
+    Blogpost.findOne({title: title}, callback)
 }
 // search?
 
@@ -44,3 +63,9 @@ const getBlogpost = module.exports.getBlogPost = (id, callback) => {
 //update
 
 //delete??
+
+
+
+const handleError = (err) => {
+    console.log(err.message);
+}

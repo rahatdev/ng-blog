@@ -24,6 +24,7 @@ mongoose.connection.on('error', (err) => {
 //initialize app
 const port = 3000;
 const app = express()
+app.use(cors())
 app.use(bodyParser.json())
 app.use(passport.initialize())
 app.use(passport.session())

@@ -28,6 +28,25 @@ Simple MEAN blog
     * [ ]Catch errors/improve stability
     * [ ]Linting
 - [ ] Front end 
+    * [x] baseline components 
+    * [ ] navbar
+        * [ ] expandable login
+        * [ ] Routes
+        * [ ] show/hide buttons based on login
+    * [ ] home
+        * show only public posts if not logged in
+        * logged in 
+            - show all posts
+            - posts show public or private indicators
+            - posts show edit button
+            - new post action available
+            - edit post action available
+    * [ ] login
+        * implement expanding/shrinking login screen
+        * guard against multiple password attempts
+        * improve security against bots
+
+    
 - [ ] Move to AWS
 
 

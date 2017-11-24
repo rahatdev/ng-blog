@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
 
 import { AppComponent } from './app.component';
@@ -11,7 +13,11 @@ import { ViewComponent } from './components/view/view.component';
 
 //auth service
 //validate service
+//blogposts service
 //auth guard
+import { BlogpostService } from './services/blogpost.service';
+
+
 
 
 @NgModule({
@@ -24,9 +30,13 @@ import { ViewComponent } from './components/view/view.component';
     ViewComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ 
+    BlogpostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

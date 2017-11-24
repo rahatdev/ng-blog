@@ -16,7 +16,7 @@ router.get('/all', (req, res, next) => {
             res.send({success: false, msg: err.message })
         } 
         else {
-            console.log(blogposts)
+           // console.log(blogposts)
             res.send({
                 success: true,
                 msg: 'All public posts',

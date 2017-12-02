@@ -87,3 +87,6 @@ BlogPost = {
 }
 
 
+### Styles
+ [Bootswatch - Darkly](https://bootswatch.com/darkly/)
+

@@ -7,10 +7,19 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
+  username: String;
+  password: String;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onLoginSubmit(){
+    //todo
+    console.log(this.username)
+    console.log(this.password)
+
   }
 
 }

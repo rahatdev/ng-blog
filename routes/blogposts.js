@@ -24,9 +24,6 @@ router.get('/all', (req, res, next) => {
             })
         }
     })
-
-    
-
 })
 
 router.get('/post.:postId', (req, res, next) => {

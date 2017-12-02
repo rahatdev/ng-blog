@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,20 @@ export class LoginComponent implements OnInit {
   username: String;
   password: String;
 
-  constructor() { }
+  constructor(private _auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  onLoginSubmit(){
+  onLoginSubmit() {
     //todo
-    console.log(this.username)
-    console.log(this.password)
+    const user = {
+      username: this.username,
+      password: this.password
+    }
+
+    //authenticate with service
+    
 
   }
 

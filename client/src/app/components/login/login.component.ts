@@ -24,7 +24,14 @@ export class LoginComponent implements OnInit {
     }
 
     //authenticate with service
-    
+    this._auth.authenticateUser(user).subscribe(data=>{
+      if(data.success){
+        console.log(data.msg)
+        console.log(data.user);
+      } else {
+        console.log(data.msg)
+      }
+    })
 
   }
 

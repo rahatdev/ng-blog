@@ -16,6 +16,7 @@ import { ViewComponent } from './components/view/view.component';
 //blogposts service
 //auth guard
 import { BlogpostService } from './services/blogpost.service';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -35,7 +36,8 @@ import { BlogpostService } from './services/blogpost.service';
     HttpModule
   ],
   providers: [ 
-    BlogpostService
+    BlogpostService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,10 @@ export class LoginComponent implements OnInit {
   username: String;
   password: String;
 
-  constructor(private _auth: AuthService) { }
+  constructor(
+    private _auth: AuthService,
+    private _flashMessage: FlashMessagesService  //TODO
+  ) { }
 
   ngOnInit() {
   }
@@ -26,10 +30,11 @@ export class LoginComponent implements OnInit {
     //authenticate with service
     this._auth.authenticateUser(user).subscribe(data=>{
       if(data.success){
-        console.log(data.msg)
-        console.log(data.user);
+        
+        //save token
+        //refresh pages to show private posts as well as create/edit
       } else {
-        console.log(data.msg)
+        this._flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
       }
     })
 

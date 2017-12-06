@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
     //authenticate with service
     this._auth.authenticateUser(user).subscribe(data=>{
       if(data.success){
-        
-        //save token
+        this._flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 3000});
+        this._auth.storeUserData(data.token, data.user)
         //refresh pages to show private posts as well as create/edit
       } else {
         this._flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});

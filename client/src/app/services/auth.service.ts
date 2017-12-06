@@ -29,7 +29,7 @@ export class AuthService {
   storeUserData(token, user) {
     if (token != undefined) {
       localStorage.setItem('id_token', token);
-      //localStorage.setItem('user', user) //needed?
+      localStorage.setItem('user', user) //needed?
     }
 
   }

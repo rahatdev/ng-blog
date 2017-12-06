@@ -40,4 +40,8 @@ export class LoginComponent implements OnInit {
 
   }
 
+  onLogoutClick(){
+    this._auth.logout();
+  }
+
 }

@@ -31,7 +31,6 @@ export class AuthService {
       localStorage.setItem('id_token', token);
       localStorage.setItem('user', user) //needed?
     }
-
   }
 
   // get user
@@ -39,5 +38,8 @@ export class AuthService {
     return tokenNotExpired('id_token');
   }
 
+  getToken(){
+    return localStorage.getItem('id_token');
+  }
 
 }

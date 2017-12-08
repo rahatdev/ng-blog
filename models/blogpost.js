@@ -27,7 +27,15 @@ const BlogpostSchema = mongoose.Schema({
 const Blogpost = module.exports = mongoose.model('Blogpost', BlogpostSchema)
 
 //get
-const getBlogposts = module.exports.getBlogposts = (author, callback) => {
+const getPublicBlogposts = module.exports.getPublicBlogposts = (author, callback) => {
+    let query = {}
+    query.public = true;
+    if(author) query.author = author
+
+    Blogpost.find(query, callback)
+}
+
+const getAllBlogposts = module.exports.getAllBlogposts = (author, callback) => {
     let query = {}
     if(author) query.author = author
 

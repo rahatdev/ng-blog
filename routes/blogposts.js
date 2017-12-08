@@ -7,11 +7,25 @@ const passport = require('passport')
 const Blogpost = require('../models/blogpost')
 
 //get
-router.get('/all', (req, res, next) => {
-    //TODO - get all blog posts
-    //TODO - if not loggedin, show only public posts
-    //TODO - if loggedin, show all posts for username
-    Blogpost.getBlogposts(null, (err, blogposts) => {
+router.get('/all', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    
+    Blogpost.getAllBlogposts(null, (err, blogposts) => {
+        if(err){
+            res.send({success: false, msg: err.message })
+        } 
+        else {
+           // console.log(blogposts)
+            res.send({
+                success: true,
+                msg: 'All public posts',
+                blogposts: blogposts
+            })
+        }
+    })
+})
+
+router.get('/public', (req, res, next) => {
+    Blogpost.getPublicBlogposts(null, (err, blogposts) => {
         if(err){
             res.send({success: false, msg: err.message })
         } 

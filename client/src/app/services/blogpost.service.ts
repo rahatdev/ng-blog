@@ -26,7 +26,7 @@ export class BlogpostService {
     } else {
       url += '/public';
     }
-    return this._http.get(url, {headers: headers})
+    return this._http.get(url, {headers: headers}).map(res => res.json())
 
   }
 

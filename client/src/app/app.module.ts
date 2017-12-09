@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {FlashMessagesModule} from 'angular2-flash-messages';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router'
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 import { AppComponent } from './app.component';
@@ -19,7 +20,13 @@ import { ViewComponent } from './components/view/view.component';
 import { BlogpostService } from './services/blogpost.service';
 import { AuthService } from './services/auth.service';
 
-
+const appRoutes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'edit', component: EditComponent },
+  { path: 'view', component: ViewComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
+]
 
 
 @NgModule({
@@ -35,9 +42,10 @@ import { AuthService } from './services/auth.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot()
   ],
-  providers: [ 
+  providers: [
     BlogpostService,
     AuthService
   ],

@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
           public: post.public
         })
       });
-
     })
   }
 

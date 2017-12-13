@@ -14,6 +14,10 @@ export class HomeComponent implements OnInit {
   constructor(private _blogposts: BlogpostService) { }
 
   ngOnInit() {
+    this.refreshPosts();
+  }
+
+  refreshPosts(){
     this.posts = []
     this._blogposts.getAllPosts().subscribe(data => {
       //console.log(data.blogposts)

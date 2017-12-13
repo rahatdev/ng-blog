@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this._flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
         this._auth.storeUserData(data.token, data.user)
         //refresh pages to show private posts as well as create/edit
-        this._router.navigate(['/home/Page?render=1']);
+        this._router.navigate(['/home']);
       } else {
         this._flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
       }
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   onLogoutClick() {
     this._auth.logout();
-    this._router.navigate(['/home/Page?render=1']);
+    this._router.navigate(['/home']);
   }
 
 }

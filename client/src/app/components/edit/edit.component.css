@@ -1,14 +1,16 @@
 #divBtns{
     right: 5px;
-    top: 5px;
+    top: -10px;
     float: right;
     position: relative;
 }
 
 #btnDelete{
     margin-top: 2px;
+    height: 36px;
 }
 
 #btnSave{
     width: 150px;
+    height: 52px;
 }

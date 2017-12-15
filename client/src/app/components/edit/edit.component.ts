@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { BlogpostService } from '../../services/blogpost.service';
 import { IBlogpost } from '../../models/blogpost';
+import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -17,13 +19,15 @@ export class EditComponent implements OnInit {
 
   constructor(
     private _auth: AuthService,
-    private _blogposts: BlogpostService
+    private _blogposts: BlogpostService,
+    private _flashMessage: FlashMessagesService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
   }
 
-  onSaveClick(){
+  onSaveClick() {
     //create if new
     //update if existing
     let username = this._auth.getUsername();
@@ -36,9 +40,14 @@ export class EditComponent implements OnInit {
       content: this.blogpostContent,
       public: this.isPublic
     }
-
-    this._blogposts.putNewBlogpost(blogpost);
-
+    this._blogposts.putNewBlogpost(blogpost).subscribe(data => {
+      if (data.success) {
+        this._flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000});
+        this._router.navigate(['/home']);
+      } else {
+        this._flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000});
+      }
+    });
   }
 
 }

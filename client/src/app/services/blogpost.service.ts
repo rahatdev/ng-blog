@@ -37,9 +37,14 @@ export class BlogpostService {
   //TODO
   putNewBlogpost(blogpost: IBlogpost){
       if(this._auth.isLoggedIn() && blogpost) {
-        console.log(blogpost)
+        let url = this._api + '/new';
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this._auth.getToken());
+        return this._http.post(url, blogpost, { headers: headers }).map(res => res.json());
       } else {
-        console.log('something went wrong')
+        //TODO handle errors
+        console.log('something went wrong');
       }
   }
   

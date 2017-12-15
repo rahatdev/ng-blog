@@ -9,12 +9,10 @@
           <div class="card-body">
             <blockquote class="card-blockquote">
               <h3>{{post.title}}</h3>
+              <header class="blockquote-footer text-smallheader">{{post.date}}  by {{post.author}}</header>
               <p>
                 {{post.content}}
               </p>
-              <footer>
-                <cite title="Source Title">{{post.author}}</cite>
-              </footer>
             </blockquote>
           </div>
         </div>
@@ -23,13 +21,11 @@
           <button *ngIf="_auth.isLoggedIn()" type="button" class="btn btn-outline-primary btn-right">Edit</button>
           <div class="card-body">
             <blockquote class="card-blockquote">
-              <h3>{{post.title}}</h3>
-              <p>
-                {{post.content}}
-              </p>
-              <footer>
-                <cite title="Source Title">{{post.author}}</cite>
-              </footer>
+                <h3>{{post.title}}</h3>
+                <header class="blockquote-footer text-smallheader">{{post.date}}  by {{post.author}}</header>
+                <p>
+                  {{post.content}}
+                </p>
             </blockquote>
           </div>
         </div>

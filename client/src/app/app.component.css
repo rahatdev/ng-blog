@@ -14,3 +14,9 @@
 .border-post{
     margin: 5px;
 }
+
+
+.text-smallheader{
+    margin-top: -7px;
+    margin-bottom: 8px;
+}

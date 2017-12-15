@@ -34,6 +34,7 @@ export class BlogpostService {
     //Neccesary?
   }
 
+  //TODO
   putNewBlogpost(blogpost: IBlogpost){
       if(this._auth.isLoggedIn() && blogpost) {
         console.log(blogpost)

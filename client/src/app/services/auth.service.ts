@@ -29,7 +29,8 @@ export class AuthService {
   storeUserData(token, user) {
     if (token != undefined) {
       localStorage.setItem('id_token', token);
-      localStorage.setItem('user', user) //needed?
+      localStorage.setItem('user', user); //needed?
+      localStorage.setItem('username', user.username);
     }
   }
 
@@ -46,6 +47,10 @@ export class AuthService {
     let user = localStorage.getItem('user');
     console.log(user);
     return user;  //should this be from db?
+  }
+
+  getUsername(){
+    return localStorage.getItem('username');
   }
 
 }

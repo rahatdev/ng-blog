@@ -12,7 +12,7 @@ import { IBlogpost } from '../../models/blogpost';
 export class EditComponent implements OnInit {
   blogpostTitle: string;
   blogpostContent: string;
-  isPublic: boolean;
+  isPublic: boolean = false;
   isNewPost: boolean;
 
   constructor(
@@ -26,10 +26,10 @@ export class EditComponent implements OnInit {
   onSaveClick(){
     //create if new
     //update if existing
-    let username = this._auth.getUser();
+    let username = this._auth.getUsername();
     console.log(username);
     let blogpost: IBlogpost = {
-      id: '',
+      id: null,
       author: username,
       date: new Date(),
       title: this.blogpostTitle,

@@ -1,8 +1,12 @@
-.ctrlBtn{
+.btn-right{
     height: 35px;
-    width: 50px;
     right: 5px;
     top: 5px;
     float: right;
     position: absolute;
+}
+
+.btn-right2{
+    right: 5px;
+    position: relative;
 }

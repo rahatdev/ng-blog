@@ -34,11 +34,11 @@ Simple MEAN blog
     * [ ]Linting
 - [ ] Front end 
     * [x] baseline components 
-    * [ ] navbar
+    * [x] navbar
         * [ ] expandable login
-        * [ ] Routes
-        * [ ] show/hide buttons based on login
-    * [ ] home
+        * [x] Routes
+        * [x] show/hide buttons based on login
+    * [x] home
         * show only public posts if not logged in
         * logged in 
             - show all posts

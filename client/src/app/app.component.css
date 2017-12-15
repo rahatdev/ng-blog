@@ -1,9 +1,10 @@
 .ctrlBtn{
     height: 35px;
     width: 50px;
-    column-span: 3; 
+    right: 5px;
+    top: 5px;
     float: right;
-   
+    position: absolute;
 }
 
 .btnCss {

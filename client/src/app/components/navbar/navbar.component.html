@@ -11,6 +11,8 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
       </ul>
+
+      <button *ngIf="_auth.isLoggedIn()" id="btnNewPost" (click)="onNewPostClick()" class="btn btn-outline-success">New Post</button>
       <app-login></app-login>
     </div>
   </nav>

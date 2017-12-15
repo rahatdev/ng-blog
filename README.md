@@ -49,6 +49,8 @@ Simple MEAN blog
     
 - [ ] Move to AWS
 
+- Home page/posts should refresh after login and login
+
 
 ========================================================================================
 ## Architecture

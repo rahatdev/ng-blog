@@ -12,7 +12,7 @@
         </li>
       </ul>
 
-      <button *ngIf="_auth.isLoggedIn()" id="btnNewPost" (click)="onNewPostClick()" class="btn btn-outline-success btn-right">New Post</button>
+      <button *ngIf="_auth.isLoggedIn()" id="btnNewPost" [routerLink]="['/edit']" class="btn btn-outline-success btn-right2">New Post</button>
       <app-login></app-login>
     </div>
   </nav>

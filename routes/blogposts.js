@@ -62,5 +62,7 @@ router.post('/new', passport.authenticate('jwt', {session:false}), (req, res, ne
     })
 })
 
+//todo update blogpost
+
 
 module.exports = router

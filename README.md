@@ -1,6 +1,4 @@
 #### Current tasks
-- privates posts should show in a different color
-- create new post
 - edit post (also make public)
 - connect to cloud mdb? aws?
 - sort order?

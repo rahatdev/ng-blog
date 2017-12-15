@@ -42,4 +42,10 @@ export class AuthService {
     return localStorage.getItem('id_token');
   }
 
+  getUser(){
+    let user = localStorage.getItem('user');
+    console.log(user);
+    return user;  //should this be from db?
+  }
+
 }

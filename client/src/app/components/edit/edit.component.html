@@ -1,7 +1,10 @@
 <form>
   <fieldset>
     <legend>Edit Post</legend>
-    <button type="submit" id="btnSave" class="btn btn-outline-success btn-right">Save</button>
+    <div id="divBtns">
+        <button type="submit" id="btnSave" (click)="onSaveClick()" class="btn btn-outline-success">  Save  </button>
+        <button type="submit" id="btnDelete" (click)="onDeleteClick()" class="btn btn-outline-danger" disabled="">Delete</button>    
+    </div>
     <!-- <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-outline-secondary">
         <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1"> Public  
@@ -19,11 +22,11 @@
     </fieldset>
 
     <div class="form-group">
-      <input type="text" class="form-control" id="blogpostTitle" aria-describedby="emailHelp" placeholder="Title">
+      <input [(ngModel)]="blogpostTitle" name="blogpostTitle" type="text" class="form-control" id="blogpostTitle" aria-describedby="emailHelp" placeholder="Title">
     </div>
 
     <div class="form-group">
-      <textarea class="form-control" id="blogpostContent" rows="50" placeholder="Content"></textarea>
+      <textarea [(ngModel)]="blogpostContent" name="blogpostContent" class="form-control" id="blogpostContent" rows="50" placeholder="Content"></textarea>
     </div>
 
   </fieldset>

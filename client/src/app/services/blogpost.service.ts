@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { AuthService } from '../services/auth.service';
 import 'rxjs/add/operator/map';
+import { IBlogpost } from '../models/blogpost';
 //import {tokenNotExpired } from 'angular2-jwt'
 
 
@@ -26,11 +27,19 @@ export class BlogpostService {
     } else {
       url += '/public';
     }
-    return this._http.get(url, {headers: headers}).map(res => res.json())
-
+    return this._http.get(url, {headers: headers}).map(res => res.json());
   }
 
   getAllPublicPosts() {
     //Neccesary?
   }
+
+  putNewBlogpost(blogpost: IBlogpost){
+      if(this._auth.isLoggedIn() && blogpost) {
+        console.log(blogpost)
+      } else {
+        console.log('something went wrong')
+      }
+  }
+  
 }

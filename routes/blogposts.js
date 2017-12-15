@@ -50,7 +50,7 @@ router.post('/new', passport.authenticate('jwt', {session:false}), (req, res, ne
     //TODO -- check if author is valid, and token is valid
     let newBlogpost = new Blogpost({
         author: req.body.author,
-        date: '',//new Date().getDate() //need to experiment
+        date: req.body.date,
         title: req.body.title,
         content: req.body.content,
         public: req.body.public

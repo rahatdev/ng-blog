@@ -32,14 +32,14 @@ const getPublicBlogposts = module.exports.getPublicBlogposts = (author, callback
     query.public = true;
     if(author) query.author = author
 
-    Blogpost.find(query, callback)
+    Blogpost.find(query, callback);
 }
 
 const getAllBlogposts = module.exports.getAllBlogposts = (author, callback) => {
     let query = {}
     if(author) query.author = author
 
-    Blogpost.find(query, callback)
+    Blogpost.find(query).sort({date: -1}).exec(callback);
 }
 
 const getBlogpost = module.exports.getBlogpost = (id, callback) => {

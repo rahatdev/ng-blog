@@ -27,7 +27,7 @@ module.exports.createUser = (newUser, callback) => {
     getUserByUsername(newUser.username, (err,user) => {
         if(err) handleError(err)
         if(!user){
-            console.log('username available, creating user')
+            //console.log('username available, creating user')
             //encrypt password
             bcrypt.genSalt(10, (err,salt) => {
                 bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -37,7 +37,7 @@ module.exports.createUser = (newUser, callback) => {
                 })
             })
         } else {
-            console.log(newUser.username + ' already exists, cannot create user')
+            //console.log(newUser.username + ' already exists, cannot create user')
             callback(new Error(newUser.username + ' already exists.'))
         }
     })   

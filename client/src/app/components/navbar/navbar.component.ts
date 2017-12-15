@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,9 +11,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private _auth: AuthService) { }
+  constructor(
+    private _auth: AuthService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  onNewPostClick(){
+    this._router.navigate(['/edit']);
   }
 
 }

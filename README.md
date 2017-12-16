@@ -1,5 +1,8 @@
 #### Current tasks
 - edit post (also make public)
+    - communication between components
+    - add update post to backend
+    - 
 - connect to cloud mdb? aws?
 - sort order?
 

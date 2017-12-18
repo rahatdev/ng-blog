@@ -12,10 +12,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class EditComponent implements OnInit {
+  blogpostId: string;
   blogpostTitle: string;
   blogpostContent: string;
   isPublic: boolean = false;
-  isNewPost: boolean;
+  isNewPost: boolean = true;
 
   constructor(
     private _auth: AuthService,
@@ -26,14 +27,29 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   let id = this._route.snapshot.paramMap.get('id');
+    let id = this._route.snapshot.paramMap.get('id');
+    if (id) {
+      this._blogposts.getPostById(id).subscribe(data => {
+        let post = data.post;
+        if (post) {
+          this.blogpostTitle = post.title,
+            this.blogpostContent = post.content,
+            this.isPublic = post.public,
+            this.isNewPost = false
+        }
+      })
+    }
 
-   
   }
 
   onSaveClick() {
     //create if new
     //update if existing
+    if (this.isNewPost) {
+      //TODO
+    } else {
+      //TODO
+    }
     let username = this._auth.getUsername();
     console.log(username);
     let blogpost: IBlogpost = {
@@ -46,12 +62,21 @@ export class EditComponent implements OnInit {
     }
     this._blogposts.putNewBlogpost(blogpost).subscribe(data => {
       if (data.success) {
-        this._flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000});
+        this._flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
         this._router.navigate(['/home']);
       } else {
-        this._flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000});
+        this._flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
       }
     });
   }
 
+  createNewPost() {
+
+  }
+
+  updatePost(){
+
+  }
 }
+
+

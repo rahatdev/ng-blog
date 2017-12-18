@@ -5,7 +5,7 @@
       <tr *ngFor="let post of posts">
         <div *ngIf="_auth.isLoggedIn() && post.public === false" class="card border-success border-post">
             <label class="badge badge-success" id="bdgPrivate">Private</label>
-          <button *ngIf="_auth.isLoggedIn()" type="button" class="btn btn-outline-primary btn-right">Edit</button>
+          <button *ngIf="_auth.isLoggedIn()" (click)="onEditClick()" type="button" class="btn btn-outline-primary btn-right">Edit</button>
           <div class="card-body">
             <blockquote class="card-blockquote">
               <h3>{{post.title}}</h3>
@@ -18,7 +18,7 @@
         </div>
 
         <div *ngIf="post.public === true" class="card border-primary border-post">
-          <button *ngIf="_auth.isLoggedIn()" type="button" class="btn btn-outline-primary btn-right">Edit</button>
+          <button *ngIf="_auth.isLoggedIn()" (click)="onEditClick()"  type="button" class="btn btn-outline-primary btn-right">Edit</button>
           <div class="card-body">
             <blockquote class="card-blockquote">
                 <h3>{{post.title}}</h3>

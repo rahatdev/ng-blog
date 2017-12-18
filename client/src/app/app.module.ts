@@ -23,7 +23,9 @@ import { AuthService } from './services/auth.service';
 const appRoutes = [
   { path: 'home', component: HomeComponent },
   { path: 'edit', component: EditComponent },
+  { path: 'edit/:id', component: EditComponent },
   { path: 'view', component: ViewComponent },
+  { path: 'view/:id', component: ViewComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ]

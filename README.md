@@ -6,6 +6,7 @@
 - connect to cloud mdb? aws?
 
 -  edit/new post/ extend viewo n same page to turn into SPA?ß
+- should there be an updated or lastupdate field?  Someway to indicated separation between original publish vs last update.
 
 # blog
 Simple MEAN blog

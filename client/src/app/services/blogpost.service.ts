@@ -23,7 +23,7 @@ export class BlogpostService {
       headers.append('Content-Type', 'application.json');
       if (this._auth.isLoggedIn()) {
         headers.append('Authorization', this._auth.getToken());
-        url += '/private-post';
+        url += '/private-post/params?param1=' +id;
       } else {
         url += '/post';
       }

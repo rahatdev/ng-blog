@@ -27,9 +27,11 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('edit component init...');
     let id = this._route.snapshot.paramMap.get('id');
     if (id) {
       this._blogposts.getPostById(id).subscribe(data => {
+        console.log(data);
         let post = data.post;
         if (post) {
           this.blogpostTitle = post.title,
@@ -75,7 +77,7 @@ export class EditComponent implements OnInit {
     // TODO
   }
 
-  updatePost(){
+  updatePost() {
     // TODO
   }
 }

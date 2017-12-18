@@ -27,6 +27,15 @@ const BlogpostSchema = mongoose.Schema({
 const Blogpost = module.exports = mongoose.model('Blogpost', BlogpostSchema)
 
 //get
+
+const getBlogpostbyId = module.exports.getBlogpostById = (id, callback) => {
+    if(!id) callback(new Error('id cannot be null'));
+    Blogpost.findById(id, callback);
+}
+const getBlogpostByTitle = (title, callback) => {
+    if(!title) callback(new Error('Title cannot be null'))
+    Blogpost.findOne({title: title}, callback)
+}
 const getPublicBlogposts = module.exports.getPublicBlogposts = (author, callback) => {
     let query = {}
     query.public = true;
@@ -40,16 +49,6 @@ const getAllBlogposts = module.exports.getAllBlogposts = (author, callback) => {
     if(author) query.author = author
 
     Blogpost.find(query).sort({date: -1}).exec(callback);
-}
-
-const getBlogpost = module.exports.getBlogpost = (id, callback) => {
-    if(!id) callback(new Error('id cannot be null'))
-    Blogpost.findById(id, callback)
-}
-
-const getBlogpostByTitle = (title, callback) => {
-    if(!title) callback(new Error('Title cannot be null'))
-    Blogpost.findOne({title: title}, callback)
 }
 // search?
 

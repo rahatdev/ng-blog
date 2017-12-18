@@ -50,6 +50,7 @@ export class EditComponent implements OnInit {
     } else {
       //TODO
     }
+
     let username = this._auth.getUsername();
     console.log(username);
     let blogpost: IBlogpost = {
@@ -71,11 +72,11 @@ export class EditComponent implements OnInit {
   }
 
   createNewPost() {
-
+    // TODO
   }
 
   updatePost(){
-
+    // TODO
   }
 }
 

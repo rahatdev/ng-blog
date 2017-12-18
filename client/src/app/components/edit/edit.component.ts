@@ -31,8 +31,8 @@ export class EditComponent implements OnInit {
     let id = this._route.snapshot.paramMap.get('id');
     if (id) {
       this._blogposts.getPostById(id).subscribe(data => {
-        console.log(data);
-        let post = data.post;
+        let post = data.blogpost;
+        console.log(post);
         if (post) {
           this.blogpostTitle = post.title,
             this.blogpostContent = post.content,

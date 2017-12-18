@@ -2,7 +2,7 @@
   <fieldset>
     <legend>Edit Post</legend>
     <div id="divBtns">
-        <button type="submit" id="btnSave" (click)="onSaveClick()" class="btn btn-outline-success">  Save  </button>
+        <button type="submit" id="btnSave" (click)="onSaveClick()" class="btn btn-outline-success">  {{isNewPost? 'Create' : 'Update'}}  </button>
         <button type="submit" id="btnDelete" (click)="onDeleteClick()" class="btn btn-outline-danger" disabled="">Delete</button>    
     </div>
     <!-- <div class="btn-group" data-toggle="buttons">

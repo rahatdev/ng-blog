@@ -63,11 +63,26 @@ const putBlogpost = module.exports.putBlogpost = (newBlogpost, callback) => {
             console.log('Could not add to database - title exists already')
             callback(new Error(newBlogpost.title +' already exists, please use a different title.'))
         }
-    })
-    
+    })  
 }
 //update
+const updateBlogpost = module.exports.updateBlogpost = (blogpost, callback) => {
+    // getBlogpostbyId(blogpost.id, (err, blogpost) => {
+    //     if(err) handleError(err);
+    //     if(blogpost){
 
+    //     } else {
+    //         callback(new Error('Could not find blogpost for id: ' +blogpost.id))
+    //     }
+    // })
+
+    Blogpost.findByIdAndUpdate(blogpost.id, { $set: {
+        date: blogpost.date,
+        title: blogpost.title,
+        content: blogpost.content,
+        public: blogpost.public
+    }}, callback)
+}
 //delete??
 
 

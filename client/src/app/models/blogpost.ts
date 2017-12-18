@@ -1,6 +1,6 @@
 export interface IBlogpost{
     id: string,
-    author: string,
+    author?: string,
     date: Date,
     title: string,
     content: string,

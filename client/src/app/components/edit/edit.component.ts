@@ -45,14 +45,6 @@ export class EditComponent implements OnInit {
   }
 
   onSaveClick() {
-    //create if new
-    //update if existing
-    if (this.isNewPost) {
-      //TODO
-    } else {
-      //TODO
-    }
-
     let username = this._auth.getUsername();
     console.log(username);
     let blogpost: IBlogpost = {
@@ -63,23 +55,34 @@ export class EditComponent implements OnInit {
       content: this.blogpostContent,
       public: this.isPublic
     }
-    this._blogposts.putNewBlogpost(blogpost).subscribe(data => {
-      if (data.success) {
-        this._flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
-        this._router.navigate(['/home']);
-      } else {
-        this._flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
-      }
-    });
+
+    if (this.isNewPost) {
+      this._blogposts.putNewBlogpost(blogpost).subscribe(data => {
+        if (data.success) {
+          this._flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+          this._router.navigate(['/home']);
+        } else {
+          this._flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+        }
+      });
+    } else {
+      this._blogposts.updateBlogpost(blogpost).subscribe(data => {
+        if (data.success) {
+          this._flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+        } else {
+          this._flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+        }
+      })
+    }
   }
 
-  createNewPost() {
-    // TODO
-  }
+  // createNewPost() {
+  //   // TODO
+  // }
 
-  updatePost() {
-    // TODO
-  }
+  // updatePost() {
+  //   // TODO
+  // }
 }
 
 

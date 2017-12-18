@@ -23,11 +23,11 @@ export class BlogpostService {
       headers.append('Content-Type', 'application.json');
       if (this._auth.isLoggedIn()) {
         headers.append('Authorization', this._auth.getToken());
-        url += '/private-post/params?param1=' +id;
+        url += '/private-post/params?param1=' + id;
       } else {
         url += '/post';
       }
-      return this._http.get(url, {headers: headers}).map(res => res.json());
+      return this._http.get(url, { headers: headers }).map(res => res.json());
     }
   }
 
@@ -62,5 +62,20 @@ export class BlogpostService {
       console.log('something went wrong');
     }
   }
+
+  updateBlogpost(blogpost: IBlogpost) {
+    if(this._auth.isLoggedIn() && blogpost){
+      let url = this._api + '/update/params?param1=' + blogpost.id; //neccesary? id could be oulled from req body
+      let headers = new Headers();
+      headers.append('Content/Type', 'application/json');
+      headers.append('authorization', this._auth.getToken());
+      return this._http.post(url, blogpost, { headers: headers}).map( res => res.json());
+    } else {
+      //tODO
+      console.log('update unsuccessful');
+    }
+
+  }
+
 
 }

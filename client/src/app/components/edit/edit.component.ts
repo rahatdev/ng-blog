@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { BlogpostService } from '../../services/blogpost.service';
 import { IBlogpost } from '../../models/blogpost';
 import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -21,10 +21,14 @@ export class EditComponent implements OnInit {
     private _auth: AuthService,
     private _blogposts: BlogpostService,
     private _flashMessage: FlashMessagesService,
-    private _router: Router
+    private _router: Router,
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+   let id = this._route.snapshot.paramMap.get('id');
+
+   
   }
 
   onSaveClick() {

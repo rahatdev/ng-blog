@@ -4,7 +4,8 @@
     - add update post to backend
     - 
 - connect to cloud mdb? aws?
-- sort order?
+
+-  edit/new post/ extend viewo n same page to turn into SPA?ß
 
 # blog
 Simple MEAN blog

@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       posts.forEach(post => {
         //console.log(post)
         this.posts.push({
-          id: post.id,
+          id: post._id,
           date: new Date(),
           author: post.author,
           title: post.title,

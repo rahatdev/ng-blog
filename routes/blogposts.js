@@ -41,8 +41,26 @@ router.get('/public', (req, res, next) => {
 })
 
 router.get('/post.:postId', (req, res, next) => {
-    //TODO - get post by id
+    //extract id
+
+    //get post
+    // if post public, return
+    // if post private, authenticate
+    //      if authenticated, return
+    //      else unauthorized, send meaningful message
 })
+
+//can this be consolidated with above?
+router.get('/private-post.:postId', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    //extract id
+
+    //get post
+    // if post public, return
+    // if post private, authenticate
+    //      if authenticated, return
+    //      else unauthorized, send meaningful message
+})
+
 
 // All post routes should be protected
 //post

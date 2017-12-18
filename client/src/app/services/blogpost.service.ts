@@ -15,19 +15,34 @@ export class BlogpostService {
     private _auth: AuthService
   ) { }
 
+
+  getPostById(id) {
+    if (id) {
+      let url = this._api;
+      let headers = new Headers();
+      headers.append('Content-Type', 'application.json');
+      if (this._auth.isLoggedIn()) {
+        headers.append('Authorization', this._auth.getToken());
+        url += '/private-post';
+      } else {
+        url += '/post';
+      }
+      return this._http.get(url, {headers: headers}).map(res => res.json());
+    }
+  }
+
   //map and return as IBlogpost[]
-  //TODO check if token valid, call getAllPublic posts if not
   getAllPosts() {
     let url = this._api;
-      let headers = new Headers()
-      headers.append('Content-Type', 'application/json')
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
     if (this._auth.isLoggedIn()) {
       url += '/all'
-      headers.append('Authorization', this._auth.getToken())
+      headers.append('Authorization', this._auth.getToken());
     } else {
       url += '/public';
     }
-    return this._http.get(url, {headers: headers}).map(res => res.json());
+    return this._http.get(url, { headers: headers }).map(res => res.json());
   }
 
   getAllPublicPosts() {
@@ -35,17 +50,17 @@ export class BlogpostService {
   }
 
   //TODO
-  putNewBlogpost(blogpost: IBlogpost){
-      if(this._auth.isLoggedIn() && blogpost) {
-        let url = this._api + '/new';
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', this._auth.getToken());
-        return this._http.post(url, blogpost, { headers: headers }).map(res => res.json());
-      } else {
-        //TODO handle errors
-        console.log('something went wrong');
-      }
+  putNewBlogpost(blogpost: IBlogpost) {
+    if (this._auth.isLoggedIn() && blogpost) {
+      let url = this._api + '/new';
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization', this._auth.getToken());
+      return this._http.post(url, blogpost, { headers: headers }).map(res => res.json());
+    } else {
+      //TODO handle errors
+      console.log('something went wrong');
+    }
   }
-  
+
 }

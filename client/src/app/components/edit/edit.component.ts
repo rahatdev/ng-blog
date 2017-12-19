@@ -27,14 +27,12 @@ export class EditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('edit component init...');
     let id = this._route.snapshot.paramMap.get('id');
     if (id) {
       this._blogposts.getPostById(id).subscribe(data => {
         let post = data.blogpost;
-        //console.log(post);
         if (post) {
-            this.blogpostTitle = post.title,
+          this.blogpostTitle = post.title,
             this.blogpostContent = post.content,
             this.isPublic = post.public,
             this.isNewPost = false,
@@ -46,7 +44,6 @@ export class EditComponent implements OnInit {
 
   onSaveClick() {
     let username = this._auth.getUsername();
-    console.log(username);
     let blogpost: IBlogpost = {
       id: this.blogpostId,
       author: username,

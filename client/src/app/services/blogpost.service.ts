@@ -65,7 +65,6 @@ export class BlogpostService {
 
   updateBlogpost(blogpost: IBlogpost) {
     if(this._auth.isLoggedIn() && blogpost){
-      console.log(blogpost);
       let url = this._api + '/update/params?param1=' + blogpost.id; //neccesary? id could be oulled from req body
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -75,8 +74,5 @@ export class BlogpostService {
       //tODO
       console.log('update unsuccessful');
     }
-
   }
-
-
 }

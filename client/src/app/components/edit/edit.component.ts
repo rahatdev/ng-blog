@@ -32,12 +32,13 @@ export class EditComponent implements OnInit {
     if (id) {
       this._blogposts.getPostById(id).subscribe(data => {
         let post = data.blogpost;
-        console.log(post);
+        //console.log(post);
         if (post) {
-          this.blogpostTitle = post.title,
+            this.blogpostTitle = post.title,
             this.blogpostContent = post.content,
             this.isPublic = post.public,
-            this.isNewPost = false
+            this.isNewPost = false,
+            this.blogpostId = id
         }
       })
     }
@@ -47,7 +48,7 @@ export class EditComponent implements OnInit {
     let username = this._auth.getUsername();
     console.log(username);
     let blogpost: IBlogpost = {
-      id: null,
+      id: this.blogpostId,
       author: username,
       date: new Date(),
       title: this.blogpostTitle,

@@ -98,16 +98,17 @@ router.post('/new', passport.authenticate('jwt', { session: false }), (req, res,
 router.post('/update/:postid', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     //TODO -- check if author is valid, and token is valid
     console.log('updating post... ');
-    //let id = req.query.param1;
+    //let id = req.query.param1; //unnecesary
 
     let newBlogpost = new Blogpost({
-        id: req.query.param1,
+        _id: req.body.id,
         date: req.body.date,
         title: req.body.title,
         content: req.body.content,
         public: req.body.public
     })
 
+    console.log(newBlogpost);
     Blogpost.updateBlogpost(newBlogpost, (err, blogpost) => {
         if (err) res.send({ success: false, msg: err.message })
         else res.send({ success: true, msg: 'Post updated successfully' })

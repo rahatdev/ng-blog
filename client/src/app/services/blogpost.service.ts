@@ -65,9 +65,10 @@ export class BlogpostService {
 
   updateBlogpost(blogpost: IBlogpost) {
     if(this._auth.isLoggedIn() && blogpost){
+      console.log(blogpost);
       let url = this._api + '/update/params?param1=' + blogpost.id; //neccesary? id could be oulled from req body
       let headers = new Headers();
-      headers.append('Content/Type', 'application/json');
+      headers.append('Content-Type', 'application/json');
       headers.append('authorization', this._auth.getToken());
       return this._http.post(url, blogpost, { headers: headers}).map( res => res.json());
     } else {

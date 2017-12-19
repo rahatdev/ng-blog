@@ -75,7 +75,8 @@ const updateBlogpost = module.exports.updateBlogpost = (blogpost, callback) => {
     //         callback(new Error('Could not find blogpost for id: ' +blogpost.id))
     //     }
     // })
-
+    console.log('entering model for blogpost update...');
+    console.log(blogpost);
     Blogpost.findByIdAndUpdate(blogpost.id, { $set: {
         date: blogpost.date,
         title: blogpost.title,

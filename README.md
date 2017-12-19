@@ -1,10 +1,7 @@
 #### Current tasks
-- edit post (also make public)
-    - communication between components
-    - add update post to backend
-    - 
 - connect to cloud mdb? aws?
 
+### Ideas:
 -  edit/new post/ extend viewo n same page to turn into SPA?ß
 - should there be an updated or lastupdate field?  Someway to indicated separation between original publish vs last update.
 

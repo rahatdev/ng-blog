@@ -13,17 +13,14 @@ import { HomeComponent } from './components/home/home.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ViewComponent } from './components/view/view.component';
 
-//auth service
-//validate service
-//blogposts service
-//auth guard
 import { BlogpostService } from './services/blogpost.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes = [
   { path: 'home', component: HomeComponent },
-  { path: 'edit', component: EditComponent },
-  { path: 'edit/:id', component: EditComponent },
+  { path: 'edit', canActivate: [AuthGuard], component: EditComponent },
+  { path: 'edit/:id', canActivate: [AuthGuard], component: EditComponent },
   { path: 'view', component: ViewComponent },
   { path: 'view/:id', component: ViewComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -49,7 +46,8 @@ const appRoutes = [
   ],
   providers: [
     BlogpostService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

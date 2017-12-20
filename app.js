@@ -35,11 +35,10 @@ app.use('/users', users);
 app.use('/posts/', blogposts);
 app.use(express.static(path.join(__dirname, 'public')));
 
-//initial get  
+//initial gets  
 app.get('/', (req, res) => {
     res.sendfile(path.join(__dirname, 'public/index.html'));
 })
-
 app.get('*', (req, res) => {
     res.sendfile(path.join(__dirname, 'public/index.html'));
 })

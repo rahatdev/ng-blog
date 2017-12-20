@@ -29,15 +29,16 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport-config')(passport);
-app.use(express.static(path.join(__dirname, 'public')));
 
-//initial gets  
-app.get('/', (req, res) => {
-    res.sendfile(path.join(__dirname, 'public/index.html'));
-})
 // routes 
 app.use('/users', users);
 app.use('/posts/', blogposts);
+app.use(express.static(path.join(__dirname, 'public')));
+
+//initial get  
+app.get('/', (req, res) => {
+    res.sendfile(path.join(__dirname, 'public/index.html'));
+})
 
 
 // Start Server

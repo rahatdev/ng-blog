@@ -25,7 +25,7 @@ webpackEmptyAsyncContext.id = "../../../../../client/src/$$_lazy_route_resource 
 var AppSettings = (function () {
     function AppSettings() {
     }
-    AppSettings.API_ENDPOINT = 'http://localhost:3000/';
+    AppSettings.API_ENDPOINT = '';
     return AppSettings;
 }());
 

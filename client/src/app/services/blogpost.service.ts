@@ -3,12 +3,14 @@ import { Http, Headers } from '@angular/http';
 import { AuthService } from '../services/auth.service';
 import 'rxjs/add/operator/map';
 import { IBlogpost } from '../models/blogpost';
+import { AppSettings } from '../api.config';
+
 //import {tokenNotExpired } from 'angular2-jwt'
 
-
+ß
 @Injectable()
 export class BlogpostService {
-  private _api: string = 'http://localhost:3000/posts' //should root for api be in shared file?
+  private _api: string = AppSettings.API_ENDPOINT + 'posts' //should root for api be in shared file?
 
   constructor(
     private _http: Http,

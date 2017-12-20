@@ -7,7 +7,6 @@ import { AppSettings } from '../api.config';
 
 //import {tokenNotExpired } from 'angular2-jwt'
 
-ß
 @Injectable()
 export class BlogpostService {
   private _api: string = AppSettings.API_ENDPOINT + 'posts' //should root for api be in shared file?

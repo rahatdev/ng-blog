@@ -1,5 +1,4 @@
 //import { Date } from 'core-js/library/web/timers';
-
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
@@ -13,23 +12,18 @@ router.get('/post.:postId', (req, res, next) => {
 
     //get post
     Blogpost.getBlogpostById(id, (err, blogpost) => {
-        if (!err && blogpost.public === true) {
+        if(!err && blogpost.public === true) {
             res.send({
                 success: true,
                 msg: 'Blogpost successfully retreived',
                 blogpost: blogpost
             });
-        } else if (err) {
+        } else if(err) {
             res.send({ success: false, msg: err.message });
         } else {
             res.send({ success: false, msg: 'Blogpost could not be retreived.' });
         }
-    })
-
-    // if post public, return
-    // if post private, authenticate
-    //      if authenticated, return
-    //      else unauthorized, send meaningful message
+    });
 })
 
 //can this be consolidated with above?
@@ -39,7 +33,7 @@ router.get('/private-post/:postId', passport.authenticate('jwt', { session: fals
 
     //get post
     Blogpost.getBlogpostById(id, (err, blogpost) => {
-        if (!err) {
+        if(!err) {
             res.send({
                 success: true,
                 msg: 'Blogpost successfully retreived',
@@ -49,20 +43,15 @@ router.get('/private-post/:postId', passport.authenticate('jwt', { session: fals
             res.send({ success: false, msg: err.message })
         }
     })
-    // if post public, return
-    // if post private, authenticate
-    //      if authenticated, return
-    //      else unauthorized, send meaningful message
 })
 
 router.get('/all', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 
     Blogpost.getAllBlogposts(null, (err, blogposts) => {
-        if (err) {
+        if(err) {
             res.send({ success: false, msg: err.message })
         }
         else {
-            // console.log(blogposts)
             res.send({
                 success: true,
                 msg: 'All public posts',
@@ -74,11 +63,10 @@ router.get('/all', passport.authenticate('jwt', { session: false }), (req, res, 
 
 router.get('/public', (req, res, next) => {
     Blogpost.getPublicBlogposts(null, (err, blogposts) => {
-        if (err) {
+        if(err) {
             res.send({ success: false, msg: err.message })
         }
         else {
-            // console.log(blogposts)
             res.send({
                 success: true,
                 msg: 'All public posts',
@@ -87,10 +75,9 @@ router.get('/public', (req, res, next) => {
         }
     })
 })
-// All post routes should be protected
+
 //post
 router.post('/new', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-    //TODO -- check if author is valid, and token is valid
     let newBlogpost = new Blogpost({
         author: req.body.author,
         date: req.body.date,
@@ -100,12 +87,12 @@ router.post('/new', passport.authenticate('jwt', { session: false }), (req, res,
     })
 
     Blogpost.putBlogpost(newBlogpost, (err, blogpost) => {
-        if (err) res.send({ success: false, msg: err.message })
+        if(err) res.send({ success: false, msg: err.message })
         else res.send({ success: true, msg: 'Post created successfully' })
     })
 })
 
-//todo update blogpost
+//update
 router.post('/update/:postid', passport.authenticate('jwt', { session: false }), (req, res, next) => {
     //let id = req.query.param1; //unnecesary
     let newBlogpost = new Blogpost({
@@ -117,14 +104,10 @@ router.post('/update/:postid', passport.authenticate('jwt', { session: false }),
     })
 
     Blogpost.updateBlogpost(newBlogpost, (err, blogpost) => {
-        if (err) res.send({ success: false, msg: err.message })
-
-        if (blogpost) res.send({ success: true, msg: 'Post updated successfully' })
-        else res.send({ success: false, msg: 'Could not update post.' })
-
-        console.log(blogpost)
+        if(err) res.send({ success: false, msg: err.message });
+        if(blogpost) res.send({ success: true, msg: 'Post updated successfully' });
+        else res.send({ success: false, msg: 'Could not update post.' });
     })
 })
-
 
 module.exports = router

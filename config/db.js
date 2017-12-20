@@ -1,4 +1,4 @@
 module.exports = {
-    database: '', //replace with cloud db
+    database: '',
     secret: '$%^USCMCITG&)*'
 }

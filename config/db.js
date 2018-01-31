@@ -1,5 +1,5 @@
 module.exports = {
-    database: 'mongodb://dan:Chyea10!@' +
+    database: 'mongodb://[user]:[password]' +
         'cluster0-shard-00-00-h9ovu.mongodb.net:27017,' +
         'cluster0-shard-00-01-h9ovu.mongodb.net:27017,' +
         'cluster0-shard-00-02-h9ovu.mongodb.net:27017/blog?' +
